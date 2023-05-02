@@ -45,6 +45,21 @@ module.exports = {
         8: '#f2f2f2',
         9: '#FAFAFA',
       },
+      'gray-new': {
+        8: '#131415',
+        15: '#242628',
+        20: '#303236',
+        30: '#494B50',
+        40: '#61646B',
+        50: '#797D86',
+        60: '#94979E',
+        70: '#AFB1B6',
+        80: '#C9CBCF',
+        90: '#E4E5E7',
+        94: '#EFEFF0',
+        95: '#F2F2F3',
+        98: '#FAFAFA',
+      },
       code: {
         'green-1': '#078345',
         'green-2': '#47D18C',
@@ -115,9 +130,49 @@ module.exports = {
               '-1px -1px 0 transparent, 1px -1px 0 transparent, -1px 1px 0 transparent, 1px 1px 0 transparent',
           },
         },
+        fadeInOverlay: {
+          '0%': {
+            opacity: 0,
+          },
+          '100%': {
+            opacity: 1,
+          },
+        },
+        fadeOutOverlay: {
+          '0%': {
+            opacity: 1,
+          },
+          '100%': {
+            opacity: 0,
+          },
+        },
+        dialogShow: {
+          '0%': {
+            opacity: 0,
+            transform: 'translateY(-2%) scale(.96)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translateY(0) scale(1)',
+          },
+        },
+        dialogHide: {
+          '0%': {
+            opacity: 1,
+            transform: 'translateY(0) scale(1)',
+          },
+          '100%': {
+            opacity: 0,
+            transform: 'translateY(-2%) scale(.96)',
+          },
+        },
       }),
       animation: {
         'text-blink': 'text-blink 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+        'fade-in-overlay': 'fadeInOverlay 0.2s',
+        'fade-out-overlay': 'fadeOutOverlay 0.2s',
+        'dialog-show': 'dialogShow 0.3s cubic-bezier(.16,1,.3,1)',
+        'dialog-hide': 'dialogHide 0.3s cubic-bezier(.16,1,.3,1)',
       },
       typography: () => ({
         DEFAULT: {
