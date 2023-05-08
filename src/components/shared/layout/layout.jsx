@@ -3,36 +3,11 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React, { useState, useRef } from 'react';
-import aa from 'search-insights';
 
 import Footer from 'components/shared/footer';
 import Header from 'components/shared/header';
 import MobileMenu from 'components/shared/mobile-menu';
 import Topbar from 'components/shared/topbar';
-import useBodyLockScroll from 'hooks/use-body-lock-scroll';
-
-import SearchModal from '../header/search-modal';
-
-// Initialization of the search-insights library
-if (process.env.NEXT_PUBLIC_ALGOLIA_APP_ID && process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY) {
-  let userToken = '';
-  aa('init', {
-    appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-    apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
-    useCookie: true,
-  });
-  aa('getUserToken', null, (err, algoliaUserToken) => {
-    if (err) {
-      // eslint-disable-next-line no-console
-      console.error(err);
-      return;
-    }
-
-    userToken = algoliaUserToken;
-  });
-
-  aa('setUserToken', userToken);
-}
 
 const Layout = ({
   className = null,
@@ -48,16 +23,6 @@ const Layout = ({
 }) => {
   const headerRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const [isMobileSearchModalOpen, setIsMobileSearchModalOpen] = useState(false);
-  useBodyLockScroll(isMobileSearchModalOpen);
-
-  const openMobileSearchModal = () => {
-    setIsMobileSearchModalOpen(true);
-  };
-  const closeMobileSearchModal = () => {
-    setIsMobileSearchModalOpen(false);
-  };
 
   const handleMobileMenuOutsideClick = () => {
     if (isMobileMenuOpen) setIsMobileMenuOpen(false);
@@ -81,7 +46,6 @@ const Layout = ({
           isSticky={isHeaderSticky}
           isDocPage={isDocPage}
           onBurgerClick={handleHeaderBurgerClick}
-          onSearchClick={openMobileSearchModal}
         />
         <main
           className={clsx(
@@ -98,7 +62,6 @@ const Layout = ({
           headerRef={headerRef}
           onOutsideClick={handleMobileMenuOutsideClick}
         />
-        <SearchModal isOpen={isMobileSearchModalOpen} closeModal={closeMobileSearchModal} />
       </div>
     </>
   );
