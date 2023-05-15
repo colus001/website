@@ -69,7 +69,7 @@ const Content = forwardRef(({ className = null, content, asHTML = false }, ref) 
       <div dangerouslySetInnerHTML={{ __html: content }} />
     ) : (
       <MDXRemote components={components} {...content} />
-    )}{' '}
+    )}
   </div>
 ));
 

@@ -45,6 +45,7 @@ const Post = ({
   releaseNotes = [],
   currentSlug,
   fileOriginPath,
+  tableOfContents,
 }) => {
   const contentRef = useRef(null);
 
@@ -80,8 +81,10 @@ const Post = ({
         )}
       >
         <nav className="no-scrollbars sticky top-10 bottom-10 max-h-[calc(100vh-80px)] overflow-y-auto overflow-x-hidden">
-          {enableTableOfContents && <TableOfContents contentRef={contentRef} />}
-          <ChatWidget className={clsx({ 'mt-32': enableTableOfContents })} />
+          {enableTableOfContents && <TableOfContents items={tableOfContents} />}
+          <ChatWidget
+            className={clsx({ 'mt-32': enableTableOfContents && tableOfContents?.length > 0 })}
+          />
         </nav>
       </div>
     </>
@@ -109,6 +112,7 @@ Post.propTypes = {
   ),
   currentSlug: PropTypes.string.isRequired,
   fileOriginPath: PropTypes.string.isRequired,
+  tableOfContents: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 export default Post;
