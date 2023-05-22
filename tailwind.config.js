@@ -74,6 +74,9 @@ module.exports = {
         'brown-1': '#A86624',
         'brown-2': '#BA8C5E',
       },
+      green: {
+        45: '#00E599',
+      },
     },
     extend: {
       fontFamily: {

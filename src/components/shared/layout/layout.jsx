@@ -50,6 +50,7 @@ const Layout = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [isMobileSearchModalOpen, setIsMobileSearchModalOpen] = useState(false);
+
   useBodyLockScroll(isMobileSearchModalOpen);
 
   const openMobileSearchModal = () => {
