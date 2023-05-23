@@ -3,14 +3,14 @@ import React from 'react';
 
 import Search from 'components/shared/search';
 
-import ChatWidget from '../chat-widget';
+import { ChatWidgetTrigger } from '../chat-widget';
 
 import Item from './item';
 
 const Sidebar = ({ className = null, sidebar, currentSlug }) => (
   <aside className={className}>
     <Search className="z-30" />
-    <ChatWidget className="relative z-20 hidden xl:mt-6 xl:flex" />
+    <ChatWidgetTrigger className="relative z-20 hidden xl:mt-6 xl:flex" />
     <nav className="relative z-20 mt-5 xl:mt-6">
       <ul>
         {sidebar.map((item, index) => (
